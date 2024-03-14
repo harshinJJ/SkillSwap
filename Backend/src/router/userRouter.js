@@ -23,9 +23,28 @@ userRouter.post("/register", async (req, res) => {
       });
     }
     const hashedpwd = await Bcrypt.hash(req.body.password, 12);
-    
+    const regData = {
+      name: req.body.name,
+      email: req.body.email,
+      password: hashedpwd,
+      number: req.body.number,
+      role: 2,
+    };
+    const savedregisterdata = await Registermodel(regData).save();
+    return res.status(200).json({
+      success: true,
+      error: false,
+      message: "Registration Successful",
+      registerdetail: savedregisterdata,
+    });
   } catch (error) {
-    console.log(error);
+    return res.status(500).json({
+      success: false,
+      error: true,
+      message: "internal server error",
+      error: error,
+      errormessage: error.message,
+    });
   }
 });
 module.exports = userRouter;
