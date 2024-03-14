@@ -1,4 +1,5 @@
 const express = require("express");
+require("dotenv").config();
 const userRouter = require("./src/router/userRouter");
 const adminRouter = require("./src/router/adminRouter");
 const instructorRouter = require("./src/router/instructorRouter");
@@ -6,7 +7,7 @@ const { default: mongoose } = require("mongoose");
 const app = express();
 mongoose
   .connect(
-    "mongodb+srv://harshin:123@recipes.0gu8qp4.mongodb.net/skillswap?retryWrites=true&w=majority&appName=recipes"
+      process.env.MONGO_URL
   )
   .then(() => {
     console.log("Database connected successfully");
@@ -21,6 +22,6 @@ app.use("/user", userRouter);
 app.use("/instructor", instructorRouter);
 app.use("/admin", adminRouter);
 
-app.listen(8060, () => {
+app.listen(process.env.PORT_NUMBER, () => {
   console.log("server started");
 });
