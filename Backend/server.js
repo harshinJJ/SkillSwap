@@ -3,12 +3,12 @@ require("dotenv").config();
 const userRouter = require("./src/router/userRouter");
 const adminRouter = require("./src/router/adminRouter");
 const instructorRouter = require("./src/router/instructorRouter");
+
 const { default: mongoose } = require("mongoose");
+const loginRouter = require("./src/router/loginRouter");
 const app = express();
 mongoose
-  .connect(
-      process.env.MONGO_URL
-  )
+  .connect(process.env.MONGO_URL)
   .then(() => {
     console.log("Database connected successfully");
   })
@@ -21,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/user", userRouter);
 app.use("/instructor", instructorRouter);
 app.use("/admin", adminRouter);
+app.use("/login", loginRouter);
 
 app.listen(process.env.PORT_NUMBER, () => {
   console.log("server started");
