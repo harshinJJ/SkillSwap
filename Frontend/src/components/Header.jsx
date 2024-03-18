@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -24,10 +25,10 @@ const Header = () => {
               Home
             </Nav.Link>
             <Nav.Link href="#action2" className="navtextstyle">
-              Link
+              Plans & Pricing
             </Nav.Link>
             <NavDropdown
-              title="Link"
+              title="Categories"
               id="navbarScrollingDropdown"
               className="navtextstyle"
             >

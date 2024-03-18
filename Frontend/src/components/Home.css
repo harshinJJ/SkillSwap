@@ -1,0 +1,14 @@
+.firstsectionofhomepage{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.firstsectionofhomepage1{
+    height: 550px;
+    width: 1150px;
+    background-image: url(/picture/1.jpg);
+    overflow: hidden;
+    background-repeat: no-repeat;
+  
+    
+}
