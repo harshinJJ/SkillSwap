@@ -1,10 +1,13 @@
 // eslint-disable-next-line no-unused-vars
-import React from "react";
+import React, { useState } from "react";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
+
 import "./Home.css";
 const Home = () => {
+  // eslint-disable-next-line no-unused-vars
+  const [searchInput, setSearchInput] = useState("");
   return (
     <>
       <section className="homepage">
@@ -29,6 +32,7 @@ const Home = () => {
             </Row>
           </div>
         </section>
+        <br />
         <br />
         <br />
         <section className="secondsectionofhomepage">
@@ -91,8 +95,185 @@ const Home = () => {
         </section>
         <br />
         <br />
+        <br />
 
-        {/* <section className="thirdsectionofhomepage">
+        <section className="homepagefourthsection text-center">
+          <br />
+          <span className="homepageheading2 ">
+            All the skills you need in one place
+          </span>
+          <br />
+          <span className="homepagefourthsectiondescription">
+            Our catalog offers a balanced approach to professional growth,
+            covering both essential workplace skills and technical subjects.
+          </span>
+          <br />
+          <br />
+          <div className="homepagefourthsectionsearchbar">
+            <div className="homepagefourthsectioncoolinput">
+              <input
+                type="text"
+                placeholder="Search Here"
+                name="input"
+                className="homepagefourthsectioninput"
+                onChange={(e) => setSearchInput(e.target.value)}
+              />
+            </div>
+            <div>
+              <button className="homepagefourthsectionbutton3">Search</button>
+            </div>
+          </div>
+          <div>
+            <br />
+            <br />
+            <Row>
+              <Col md={3} className="homepagefourthsectioncol2position">
+                <div className="homepagefourthsectioncard2">
+                  <img
+                    src="/picture/5.png"
+                    alt=""
+                    className="specificcoursedetailsimg1"
+                  />
+                  <br />
+                  <div className="specificcoursedetailsdescription2">
+                    Web development
+                  </div>
+                  <hr className="homepagefourthsectioncustom-hr2" />
+
+                  <button className="specificcoursedetailsbutton1">
+                    <div className="specificcoursedetailsbuy">Details</div>
+                  </button>
+                </div>
+              </Col>
+              <Col md={3} className="homepagefourthsectioncol2position">
+                <div className="homepagefourthsectioncard2">
+                  <img
+                    src="/picture/5.png"
+                    alt=""
+                    className="specificcoursedetailsimg1"
+                  />
+                  <br />
+                  <div className="specificcoursedetailsdescription2">
+                    Web development
+                  </div>
+                  <hr className="homepagefourthsectioncustom-hr2" />
+
+                  <button className="specificcoursedetailsbutton1">
+                    <div className="specificcoursedetailsbuy">Details</div>
+                  </button>
+                </div>
+              </Col>
+              <Col md={3} className="homepagefourthsectioncol2position">
+                <div className="homepagefourthsectioncard2">
+                  <img
+                    src="/picture/5.png"
+                    alt=""
+                    className="specificcoursedetailsimg1"
+                  />
+                  <br />
+                  <div className="specificcoursedetailsdescription2">
+                    Web development
+                  </div>
+                  <hr className="homepagefourthsectioncustom-hr2" />
+
+                  <button className="specificcoursedetailsbutton1">
+                    <div className="specificcoursedetailsbuy">Details</div>
+                  </button>
+                </div>
+              </Col>
+              <Col md={3} className="homepagefourthsectioncol2position">
+                <div className="homepagefourthsectioncard2">
+                  <img
+                    src="/picture/5.png"
+                    alt=""
+                    className="specificcoursedetailsimg1"
+                  />
+                  <br />
+                  <div className="specificcoursedetailsdescription2">
+                    Web development
+                  </div>
+                  <hr className="homepagefourthsectioncustom-hr2" />
+
+                  <button className="specificcoursedetailsbutton1">
+                    <div className="specificcoursedetailsbuy">Details</div>
+                  </button>
+                </div>
+              </Col>
+            </Row>
+          </div>
+        </section>
+        <br />
+        <br />
+        <br />
+
+        <section className="text-center">
+          <span className="homepageheading2 text-center">
+            Invest in your career with SkillSwap
+          </span>
+          <br />
+          <br />
+          <div className="homepagethirdsectionposition">
+            <Row>
+              <Col md={4}>
+                <div className="homepagecard1">
+                  <img
+                    src="/picture/12.png"
+                    alt=""
+                    className="thirdsectionimg"
+                  />
+                  <span>Learn Anything</span>
+                  <br />
+                  <span className="text-center">
+                    Explore any interest or trending topic, take prerequisites,
+                    and advance your skills
+                  </span>
+                </div>
+              </Col>
+              <Col md={4}>
+                <div className="homepagecard1">
+                  <img
+                    src="/picture/10.png"
+                    alt=""
+                    className="thirdsectionimg"
+                  />
+                  <span>Save Money</span>
+                  <br />
+                  <span className="text-center">
+                    Spend less money on your learning if you plan to take
+                    multiple courses this year
+                  </span>
+                </div>
+              </Col>
+              <Col md={4}>
+                <div className="homepagecard1">
+                  <img
+                    src="/picture/11.png"
+                    alt=""
+                    className="thirdsectionimg"
+                  />
+                  <span>Flexible Learning</span>
+                  <br />
+                  <span className="text-center">
+                    Learn at your own pace, move between multiple courses, or
+                    switch to a different course
+                  </span>
+                </div>
+              </Col>
+            </Row>
+          </div>
+        </section>
+        <br />
+        <br />
+        <br />
+      </section>
+    </>
+  );
+};
+
+export default Home;
+
+{
+  /* <section className="thirdsectionofhomepage">
           <Row>
             <Col md={6} className="thirdsectioncol">
               <span className="thirdsectionheading1">
@@ -126,8 +307,10 @@ const Home = () => {
                     <br />
                     <div className="thirdsectionsubhead">Track Progress</div>
                   </div>
-                </div> */}
-                {/* <div className="thirdsectionvl"></div>
+                </div> */
+}
+{
+  /* <div className="thirdsectionvl"></div>
                 <div className="thirdsectionsubheadposition">
                   <div className="thirdsectionsubhead">Discover Skills</div>
                   <br />
@@ -149,8 +332,10 @@ const Home = () => {
                   <br />
                   <br />
                   <div className="thirdsectionsubhead">Track Progress</div>
-                </div> */}
-              {/* </div>
+                </div> */
+}
+{
+  /* </div>
             </Col>
             <Col md={6} className="thirdsectioncol">
               <article className="thirdsectioncard">
@@ -173,10 +358,5 @@ const Home = () => {
           </Row>
           <br />
           <br />
-        </section> */}
-      </section>
-    </>
-  );
-};
-
-export default Home;
+        </section> */
+}

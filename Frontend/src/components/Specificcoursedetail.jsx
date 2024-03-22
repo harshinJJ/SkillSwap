@@ -135,6 +135,7 @@ const Specificcoursedetail = () => {
           </span>
           <br />
           <br />
+          <br />
           <div className="specificcoursedetailsothercoursedetails">
             <div>
               <Row>
@@ -156,8 +157,44 @@ const Specificcoursedetail = () => {
                     </button>
                   </div>
                 </Col>
-                <Col md={4} className="specificcoursedetailscol2position"></Col>
-                <Col md={4} className="specificcoursedetailscol2position"></Col>
+                <Col md={4} className="specificcoursedetailscol2position">
+                  {" "}
+                  <div className="specificcoursedetailscard2">
+                    <img
+                      src="/picture/5.png"
+                      alt=""
+                      className="specificcoursedetailsimg1"
+                    />
+                    <br />
+                    <div className="specificcoursedetailsdescription2">
+                      Web development
+                    </div>
+                    <hr className="specificcoursedetailscustom-hr2" />
+
+                    <button className="specificcoursedetailsbutton1">
+                      <div className="specificcoursedetailsbuy">Details</div>
+                    </button>
+                  </div>
+                </Col>
+                <Col md={4} className="specificcoursedetailscol2position">
+                  {" "}
+                  <div className="specificcoursedetailscard2">
+                    <img
+                      src="/picture/5.png"
+                      alt=""
+                      className="specificcoursedetailsimg1"
+                    />
+                    <br />
+                    <div className="specificcoursedetailsdescription2">
+                      Web development
+                    </div>
+                    <hr className="specificcoursedetailscustom-hr2" />
+
+                    <button className="specificcoursedetailsbutton1">
+                      <div className="specificcoursedetailsbuy">Details</div>
+                    </button>
+                  </div>
+                </Col>
               </Row>
             </div>
           </div>
