@@ -6,12 +6,14 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+
 import "./Header.css";
+import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <Navbar expand="lg" className="bg-body-tertiary navbgstyle">
       <Container fluid>
-        <Navbar.Brand className="brandstyle" href="#">
+        <Navbar.Brand className="brandstyle" href="/">
           SkillSwap
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -21,10 +23,10 @@ const Header = () => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link href="#action1" className="navtextstyle">
+            <Nav.Link href="/" className="navtextstyle">
               Home
             </Nav.Link>
-            <Nav.Link href="#action2" className="navtextstyle">
+            <Nav.Link href="/Subscription" className="navtextstyle">
               Plans & Pricing
             </Nav.Link>
             <NavDropdown
@@ -32,14 +34,14 @@ const Header = () => {
               id="navbarScrollingDropdown"
               className="navtextstyle"
             >
-              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
+              <NavDropdown.Item href="/Specificcoursedetail">
+                Action
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/coursedetails">
                 Another action
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
-                Something else here
-              </NavDropdown.Item>
+              <NavDropdown.Item href="">Something else here</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
@@ -57,42 +59,47 @@ const Header = () => {
             aria-label="Search"
           />
         </Form>
-        <Button
-          variant="outline-success"
-          className="btn-spacing"
-          style={{
-            fontFamily:
-              "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif",
-            color: "black",
-            borderColor: "black",
-          }}
-          onMouseOver={(e) => {
-            e.target.style.backgroundColor = "grey"; // Change hover color
-          }}
-          onMouseOut={(e) => {
-            e.target.style.backgroundColor = "transparent"; // Reset to original color
-          }}
-        >
-          Log in
-        </Button>
-        <Button
-          variant="outline-success"
-          style={{
-            fontFamily:
-              "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif",
-            color: "white",
-            borderColor: "black",
-            backgroundColor: "black",
-          }}
-          onMouseOver={(e) => {
-            e.target.style.backgroundColor = "grey"; // Change hover color
-          }}
-          onMouseOut={(e) => {
-            e.target.style.backgroundColor = "black"; // Reset to original color
-          }}
-        >
-          Sign up
-        </Button>
+        <Link to="/Login">
+          <Button
+            onClick={`/Login`}
+            variant="outline-success"
+            className="btn-spacing"
+            style={{
+              fontFamily:
+                "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif",
+              color: "black",
+              borderColor: "black",
+            }}
+            onMouseOver={(e) => {
+              e.target.style.backgroundColor = "grey"; // Change hover color
+            }}
+            onMouseOut={(e) => {
+              e.target.style.backgroundColor = "transparent"; // Reset to original color
+            }}
+          >
+            Log in
+          </Button>
+        </Link>
+        <Link to="/Signup">
+          <Button
+            variant="outline-success"
+            style={{
+              fontFamily:
+                "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif",
+              color: "white",
+              borderColor: "black",
+              backgroundColor: "black",
+            }}
+            onMouseOver={(e) => {
+              e.target.style.backgroundColor = "grey"; // Change hover color
+            }}
+            onMouseOut={(e) => {
+              e.target.style.backgroundColor = "black"; // Reset to original color
+            }}
+          >
+            Sign up
+          </Button>
+        </Link>
       </Container>
     </Navbar>
   );
