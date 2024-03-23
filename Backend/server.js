@@ -3,7 +3,6 @@ require("dotenv").config();
 const userRouter = require("./src/router/userRouter");
 const adminRouter = require("./src/router/adminRouter");
 const instructorRouter = require("./src/router/instructorRouter");
-
 const { default: mongoose } = require("mongoose");
 const loginRouter = require("./src/router/loginRouter");
 const app = express();

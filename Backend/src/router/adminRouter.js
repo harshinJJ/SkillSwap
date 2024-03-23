@@ -72,6 +72,7 @@ adminRouter.post(
         skillLevel: req.body.skillLevel,
         category: req.body.category,
         photo: req.file.filename,
+        
       };
       const coursedeatils = await Course(data).save();
       return res.status(200).json({
