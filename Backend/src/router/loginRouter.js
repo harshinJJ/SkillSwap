@@ -1,12 +1,11 @@
 const express = require("express");
 const Registermodel = require("../model/Registermodel");
 const jwt = require("jsonwebtoken");
-const Loginmodel = require("../model/Loginmodel");
 const loginRouter = express.Router();
 
 loginRouter.get("/login", async (req, res) => {
   try {
-    const findexistinguser = await Loginmodel.findOne({
+    const findexistinguser = await Registermodel.findOne({
       email: req.body.email,
     });
     if (!findexistingemail) {
@@ -35,6 +34,14 @@ loginRouter.get("/login", async (req, res) => {
       { expiresIn: "5h" }
     );
     console.log(token);
-  } catch (error) {}
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      error: true,
+      message: "internal server error",
+      error: error,
+      errormessage: error.message,
+    });
+  }
 });
 module.exports = loginRouter;

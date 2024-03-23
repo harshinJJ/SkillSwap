@@ -1,7 +1,6 @@
 const express = require("express");
 const Bcrypt = require("bcrypt");
 const Registermodel = require("../model/Registermodel");
-const Loginmodel = require("../model/Loginmodel");
 const userRouter = express.Router();
 
 userRouter.post("/register", async (req, res) => {
@@ -24,18 +23,11 @@ userRouter.post("/register", async (req, res) => {
       });
     }
     const hashedpwd = await Bcrypt.hash(req.body.password, 12);
-    const logindata = {
-      email : req.body.email,
-      password: hashedpwd,
-      role: 2,
-    }
-    const logindatas = await Loginmodel(logindata).save();
     const regData = {
-      loginid: logindata._id,
       name: req.body.name,
       email: req.body.email,
       password: hashedpwd,
-      number: req.body.number,
+      role: 2,
     };
     const savedregisterdata = await Registermodel(regData).save();
     return res.status(200).json({
