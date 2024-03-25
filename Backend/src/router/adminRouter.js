@@ -1,17 +1,31 @@
 const express = require("express");
 const Registermodel = require("../model/Registermodel");
 const multer = require("multer");
+const { getVideoDurationInSeconds } = require("get-video-duration");
 const Course = require("../model/Coursemodel");
 const adminRouter = express.Router();
+const cloudinary = require("cloudinary").v2;
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
+});
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "./public/image");
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.originalname);
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "skillswap",
   },
 });
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, "./public/image");
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, file.originalname);
+//   },
+// });
 
 const upload = multer({ storage: storage });
 
@@ -60,21 +74,76 @@ adminRouter.get("/register", async (req, res) => {
 
 adminRouter.post(
   "/corsedetailsuploading",
-  upload.single("photo"),
+  upload.array("video", 1),
   async (req, res) => {
     try {
       const data = {
         title: req.body.title,
         description: req.body.description,
         instructor: req.body.instructor,
+        instructor_description: req.body.instructor_description,
         duration: req.body.duration,
-        price: req.body.price,
         skillLevel: req.body.skillLevel,
+        course_outcome: req.body.course_outcome,
         category: req.body.category,
-        photo: req.file.filename,
-        
+        //photo: req.file.filename,
+        // photo: req.file.path,
+        video:
+          req.files && req.files.length > 0
+            ? req.files.map((file) => file.path)
+            : null,
+        videoLength: null,
       };
-      const coursedeatils = await Course(data).save();
+
+      if (data.video && data.video.length > 0) {
+        const videoPath = data.video[0];
+        getVideoDurationInSeconds(videoPath)
+          .then((duration) => {
+            roundof = Math.floor(duration);
+            data.videoLength = roundof;
+            return Course(data).save();
+          })
+          .then((data) => {
+            if (data) {
+              return res.status(200).json({
+                success: true,
+                error: false,
+                message: "Upload Successful",
+              });
+            }
+          });
+      }
+      // const coursedeatils = await Course(data).save();
+
+      // const course = new Course(data); // Create a new Course instance
+      // const courseDetails = await course.save();
+      // return res.status(200).json({
+      //   success: true,
+      //   error: false,
+      //   message: "Upload Successful",
+      //   productdetails: coursedeatils,
+      // });
+    } catch (error) {
+      return res.status(500).json({
+        success: false,
+        error: true,
+        message: "internal server error",
+        error: error,
+        errormessage: error.message,
+      });
+    }
+  }
+);
+adminRouter.post(
+  "/courseuploadingvideo/:id",
+  upload.single("video"),
+  async (req, res) => {
+    try {
+      const id = req.params.id;
+      const data = {
+        video: req.file.path,
+      };
+      const coursedeatils = await Course.updateOne({ _id: id }, { $set: data });
       return res.status(200).json({
         success: true,
         error: false,
@@ -82,6 +151,7 @@ adminRouter.post(
         productdetails: coursedeatils,
       });
     } catch (error) {
+      console.log(error.message);
       return res.status(500).json({
         success: false,
         error: true,
