@@ -1,6 +1,8 @@
+// eslint-disable-next-line no-unused-vars
 import React from "react";
 import "./Allcoursedetails.css";
 import Row from "react-bootstrap/Row";
+// eslint-disable-next-line no-unused-vars
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import { useParams } from "react-router-dom";

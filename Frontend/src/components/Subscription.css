@@ -186,8 +186,8 @@
         width: 70px;
     }
     .subscription-container {
-      display: flex; /* Arrange cards horizontally */
-      justify-content: space-between; /* Space cards evenly */
+      display: flex; 
+      justify-content: space-between; 
     }
     
     .slide-in-left {
@@ -204,33 +204,33 @@
     
     @keyframes slide-in-left {
       from {
-        transform: translateX(-100%); /* Start from off-screen to the left */
-        opacity: 0; /* Start invisible */
+        transform: translateX(-100%); 
+        opacity: 0; 
       }
       to {
-        transform: translateX(0); /* Slide to the right to be visible */
-        opacity: 1; /* Become fully visible */
+        transform: translateX(0); 
+        opacity: 1; 
       }
     }
     
     @keyframes slide-in-right {
       from {
-        transform: translateX(100%); /* Start from off-screen to the right */
-        opacity: 0; /* Start invisible */
+        transform: translateX(100%); 
+        opacity: 0; 
       }
       to {
-        transform: translateX(0); /* Slide to the left to be visible */
-        opacity: 1; /* Become fully visible */
+        transform: translateX(0); 
+        opacity: 1; 
       }
     }
     
     @keyframes slide-in-bottom {
       from {
-        transform: translateY(100%); /* Start from off-screen bottom */
-        opacity: 0; /* Start invisible */
+        transform: translateY(100%);
+        opacity: 0; 
       }
       to {
-        transform: translateY(0); /* Slide up to be visible */
-        opacity: 1; /* Become fully visible */
+        transform: translateY(0); 
+        opacity: 1; 
       }
     }
