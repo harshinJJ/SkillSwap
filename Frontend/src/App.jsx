@@ -8,6 +8,7 @@ import Signuppage from "./components/Signuppage";
 import Coursedetails from "./components/Coursedetails";
 import Specificcoursedetail from "./components/Specificcoursedetail";
 import Subscription from "./components/Subscription";
+import Allcoursedetails from "./components/Allcoursedetails";
 function App() {
   return (
     <>
@@ -18,13 +19,19 @@ function App() {
             <Route exact path="/" element={<Home />} />
             <Route exact path="/Login" element={<Loginpage />} />
             <Route exact path="/Signup" element={<Signuppage />} />
-            <Route exact path="/coursedetails" element={<Coursedetails />} />
+            <Route exact path="/" element={<Signuppage />} />
+            <Route
+              exact
+              path="/allcoursedetails/:categories"
+              element={<Allcoursedetails />}
+            />
             <Route
               exact
               path="/Specificcoursedetail"
               element={<Specificcoursedetail />}
             />
             <Route exact path="/Subscription" element={<Subscription />} />
+            <Route exact path="/coursedetail" element={<Coursedetails />} />
           </Route>
         </Routes>
         <Footer />

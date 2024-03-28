@@ -1,0 +1,60 @@
+.allcoursedetailspadding{
+    padding: 0px 70px;
+}
+.allcoursedetailsheading{
+    font-family: "Cormorant SC", serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 35px;
+}
+.allcoursedetailsheading2{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 25px;
+}
+.allcoursedetailscustom-hr1 {
+    position: relative;
+    background: rgb(181, 177, 177);
+    border: none;
+    height: 1px;
+    width: 1299px;
+  }
+  .allcoursedetailsdiv2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .allcoursedetailsdiv2border{
+    border: solid;
+    width: 1280px;
+    height: 331px;
+    border-width: .1px;
+    border-radius: 2px;
+    padding: 30px 30px;
+    overflow: hidden;
+
+  }
+.allcoursedetailsimg1{
+    width: 480px;
+}
+.allcoursedetailscol1{
+   position: relative;
+   left: 110px;
+}
+.slide-in {
+    animation: slide-in 1s ease-in-out forwards;
+  }
+  
+  @keyframes slide-in {
+    from {
+      transform: translateX(-100%); /* Start from off-screen to the left */
+      opacity: 0; /* Start invisible */
+    }
+    to {
+      transform: translateX(0); /* Slide to the right to be visible */
+      opacity: 1; /* Become fully visible */
+    }
+  }
+  

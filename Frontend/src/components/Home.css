@@ -443,13 +443,12 @@ justify-content: center;
 
   }
   .homepagefourthsectioncard2 {
-    width: 200px;
+    width: 250px;
     height: auto;
     background: white;
     padding: 1rem;
-    border-radius: 1rem;
-    border: 0.5vmin solid #05060f;
-    box-shadow: 0rem 0rem 1rem #05060f;
+    border-radius: 5px;
+    border: 1px solid #05060f;
     overflow: hidden;
     color: black;
     display: flex;
@@ -462,5 +461,5 @@ justify-content: center;
     background: black;
     border: none;
     height: 1px;
-    width: 160px;
+    width: 195px;
   }

@@ -11,6 +11,8 @@ const Home = () => {
   return (
     <>
       <section className="homepage">
+      <div className="allcoursedetailsdiv2 slide-in">
+
         <section className="firstsectionofhomepage">
           <div className="firstsectionofhomepage1">
             <Row>
@@ -32,6 +34,7 @@ const Home = () => {
             </Row>
           </div>
         </section>
+        </div>
         <br />
         <br />
         <br />

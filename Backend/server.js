@@ -1,5 +1,6 @@
 const express = require("express");
 require("dotenv").config();
+const cors = require("cors");
 const userRouter = require("./src/router/userRouter");
 const adminRouter = require("./src/router/adminRouter");
 const instructorRouter = require("./src/router/instructorRouter");
@@ -14,6 +15,7 @@ mongoose
   .catch((error) => {
     console.log("error:", error);
   });
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

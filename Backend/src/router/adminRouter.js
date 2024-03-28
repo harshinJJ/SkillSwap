@@ -75,8 +75,25 @@ adminRouter.get("/register", async (req, res) => {
 adminRouter.post(
   "/corsedetailsuploading",
   upload.array("video", 1),
+  // upload.fields([
+  //   {
+  //     name: "video",
+  //     maxCount: 1,
+  //   },
+  //   {
+  //     name: "photo",
+  //     maxCount: 1,
+  //   },
+  // ]),
+
   async (req, res) => {
     try {
+      console.log("body", req.body);
+      console.log("files", req.files);
+      // console.log("path", req.files["photo"][0].path);
+      // console.log("path", req.files["video"][0].path);
+      console.log("files", JSON.stringify(req.files, null, 2));
+
       const data = {
         title: req.body.title,
         description: req.body.description,
@@ -86,43 +103,21 @@ adminRouter.post(
         skillLevel: req.body.skillLevel,
         course_outcome: req.body.course_outcome,
         category: req.body.category,
-        //photo: req.file.filename,
-        // photo: req.file.path,
-        video:
-          req.files && req.files.length > 0
-            ? req.files.map((file) => file.path)
-            : null,
-        videoLength: null,
+        video: req.files[0].path,
+        // photo: req.files["photo"][0].path,
+        // video: req.files["video"][0].path,
       };
 
-      if (data.video && data.video.length > 0) {
-        const videoPath = data.video[0];
-        getVideoDurationInSeconds(videoPath)
-          .then((duration) => {
-            roundof = Math.floor(duration);
-            data.videoLength = roundof;
-            return Course(data).save();
-          })
-          .then((data) => {
-            if (data) {
-              return res.status(200).json({
-                success: true,
-                error: false,
-                message: "Upload Successful",
-              });
-            }
-          });
-      }
-      // const coursedeatils = await Course(data).save();
+      const coursedeatils = await Course(data).save();
 
       // const course = new Course(data); // Create a new Course instance
       // const courseDetails = await course.save();
-      // return res.status(200).json({
-      //   success: true,
-      //   error: false,
-      //   message: "Upload Successful",
-      //   productdetails: coursedeatils,
-      // });
+      return res.status(200).json({
+        success: true,
+        error: false,
+        message: "Upload Successful",
+        productdetails: coursedeatils,
+      });
     } catch (error) {
       return res.status(500).json({
         success: false,

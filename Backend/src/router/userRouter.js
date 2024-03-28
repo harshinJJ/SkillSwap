@@ -15,7 +15,7 @@ userRouter.post("/register", async (req, res) => {
         message: "Email already exists",
       });
     }
-    if (req.body.password !== req.body.cpassword) {
+    if (req.body.password !== req.body.confirmpassword) {
       return res.status(400).json({
         success: false,
         error: true,

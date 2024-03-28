@@ -8,86 +8,91 @@ const Subscription = () => {
   return (
     <section className="Subscription">
       <div className="spacing"></div>
+
       <div className="Subscriptionheading1">Choose a plan for your future</div>
+
       <div>
-        <Container>
-          <Row>
-            <Col md={4} className="Subscriptioncol1">
-              <div className="Subscriptione-card Subscriptionplaying">
-                <div className="Subscriptionimage"></div>
-                <div className="Subscriptionwave"></div>
-                <div className="Subscriptionwave"></div>
-                <div className="Subscriptionwave"></div>
+        <div className="subscription-container">
+          <Container>
+            <Row>
+              <Col md={4} className="Subscriptioncol1 slide-in-left">
+                <div className="Subscriptione-card Subscriptionplaying">
+                  <div className="Subscriptionimage"></div>
+                  <div className="Subscriptionwave"></div>
+                  <div className="Subscriptionwave"></div>
+                  <div className="Subscriptionwave"></div>
 
-                <div className="Subscriptioninfotop">
-                  Personal Plan
-                  <div className="Subscriptionname">For You</div>
-                  <div className="Subscriptionname">Individual</div>
-                  <hr className="specificcoursedetailscustom-hr1" />
-                  <div className="Subscriptionname1">
-                    Starting at ₹799 per month
-                  </div>
-                  <div className="descriptionspacing"></div>
-                  <button className="specificcoursedetailsbutton1">
-                    <div className="specificcoursedetailsbuy">
-                      Subscribe Now
+                  <div className="Subscriptioninfotop">
+                    Personal Plan
+                    <div className="Subscriptionname">For You</div>
+                    <div className="Subscriptionname">Individual</div>
+                    <hr className="specificcoursedetailscustom-hr1" />
+                    <div className="Subscriptionname1">
+                      Starting at ₹799 per month
                     </div>
-                  </button>
+                    <div className="descriptionspacing"></div>
+                    <button className="specificcoursedetailsbutton1">
+                      <div className="specificcoursedetailsbuy">
+                        Subscribe Now
+                      </div>
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </Col>
-            <Col md={4} className="Subscriptioncol1">
-              <div className="Subscriptione-card Subscriptionplaying">
-                <div className="Subscriptionimage"></div>
-                <div className="Subscriptionwave"></div>
-                <div className="Subscriptionwave"></div>
-                <div className="Subscriptionwave"></div>
+              </Col>
+              <Col md={4} className="Subscriptioncol1 slide-in-bottom">
+                <div className="Subscriptione-card Subscriptionplaying">
+                  <div className="Subscriptionimage"></div>
+                  <div className="Subscriptionwave"></div>
+                  <div className="Subscriptionwave"></div>
+                  <div className="Subscriptionwave"></div>
 
-                <div className="Subscriptioninfotop">
-                  Team Plan
-                  <div className="Subscriptionname">For Your Team</div>
-                  <div className="Subscriptionname">2-10 People</div>
-                  <hr className="specificcoursedetailscustom-hr1" />
-                  <div className="Subscriptionname1">
-                    Starting at ₹1099 per month
-                  </div>
-                  <div className="descriptionspacing"></div>
-                  <button className="specificcoursedetailsbutton1">
-                    <div className="specificcoursedetailsbuy">
-                      Subscribe Now
+                  <div className="Subscriptioninfotop">
+                    Team Plan
+                    <div className="Subscriptionname">For Your Team</div>
+                    <div className="Subscriptionname">2-10 People</div>
+                    <hr className="specificcoursedetailscustom-hr1" />
+                    <div className="Subscriptionname1">
+                      Starting at ₹1099 per month
                     </div>
-                  </button>
+                    <div className="descriptionspacing"></div>
+                    <button className="specificcoursedetailsbutton1">
+                      <div className="specificcoursedetailsbuy">
+                        Subscribe Now
+                      </div>
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </Col>
-            <Col md={4} className="Subscriptioncol1">
-              <div className="Subscriptione-card Subscriptionplaying">
-                <div className="Subscriptionimage"></div>
-                <div className="Subscriptionwave"></div>
-                <div className="Subscriptionwave"></div>
-                <div className="Subscriptionwave"></div>
-                <div className="Subscriptioninfotop">
-                  Enterprise Plan
-                  <div className="Subscriptionname">
-                    For Your whole Organisation
-                  </div>
-                  <div className="Subscriptionname">More than 10 People</div>
-                  <hr className="specificcoursedetailscustom-hr1" />
-                  <div className="Subscriptionname1">
-                    Starting at ₹1499 per month
-                  </div>
-                  <div className="descriptionspacing"></div>
-                  <button className="specificcoursedetailsbutton1">
-                    <div className="specificcoursedetailsbuy">
-                      Subscribe Now
+              </Col>
+              <Col md={4} className="Subscriptioncol1 slide-in-right">
+                <div className="Subscriptione-card Subscriptionplaying">
+                  <div className="Subscriptionimage"></div>
+                  <div className="Subscriptionwave"></div>
+                  <div className="Subscriptionwave"></div>
+                  <div className="Subscriptionwave"></div>
+                  <div className="Subscriptioninfotop">
+                    Enterprise Plan
+                    <div className="Subscriptionname">
+                      For Your whole Organisation
                     </div>
-                  </button>
+                    <div className="Subscriptionname">More than 10 People</div>
+                    <hr className="specificcoursedetailscustom-hr1" />
+                    <div className="Subscriptionname1">
+                      Starting at ₹1499 per month
+                    </div>
+                    <div className="descriptionspacing"></div>
+                    <button className="specificcoursedetailsbutton1">
+                      <div className="specificcoursedetailsbuy">
+                        Subscribe Now
+                      </div>
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </Col>
-          </Row>
-        </Container>
+              </Col>
+            </Row>
+          </Container>
+        </div>
       </div>
+
       <br />
       <br />
       <section className="Subscription2ndsection">

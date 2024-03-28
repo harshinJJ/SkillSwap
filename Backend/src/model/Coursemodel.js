@@ -10,9 +10,8 @@ const courseSchema = new schema({
   course_outcome: { type: [String], required: true },
   category: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
-  photo: { type: [String] },
-  video: {type: [String],default:''},
-  videoLength: {type: Number}
+  photo: { type: String },
+  video: { type: String },
 });
 var Course = mongoose.model("Course", courseSchema);
 module.exports = Course;
