@@ -18,7 +18,7 @@ const Header = () => {
   };
   return (
     <>
-      {role == 1 ? (
+      {role == 0 ? (
         <Navbar expand="lg" className="bg-body-tertiary navbgstyle">
           <Container fluid>
             <Navbar.Brand className="brandstyle" href="/">
@@ -34,7 +34,7 @@ const Header = () => {
                 <Nav.Link href="/" className="navtextstyle">
                   Home
                 </Nav.Link>
-                <Nav.Link href="/" className="navtextstyle">
+                <Nav.Link href="/Adminproductadding" className="navtextstyle">
                   Add New Course
                 </Nav.Link>
                 <Nav.Link href="/" className="navtextstyle">

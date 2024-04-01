@@ -25,6 +25,8 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    position: relative; /* Add position relative */
+    overflow: hidden; /* Hide overflow */
   }
   .allcoursedetailsdiv2border{
     border: solid;
@@ -34,7 +36,8 @@
     border-radius: 2px;
     padding: 30px 30px;
     overflow: hidden;
-
+    background-color: rgb(229, 224, 224);
+    transition: transform 0.5s ease;
   }
 .allcoursedetailsimg1{
     width: 480px;
@@ -43,18 +46,73 @@
    position: relative;
    left: 110px;
 }
-.slide-in {
-    animation: slide-in 1s ease-in-out forwards;
-  }
-  
-  @keyframes slide-in {
-    from {
-      transform: translateX(-100%); /* Start from off-screen to the left */
-      opacity: 0; /* Start invisible */
-    }
-    to {
-      transform: translateX(0); /* Slide to the right to be visible */
-      opacity: 1; /* Become fully visible */
-    }
-  }
-  
+
+  /* <div className="allcoursedetailsdiv2">
+          <div className="allcoursedetailsdiv2border">
+            <div className="allcoursedetailsdiv2details">
+             
+              <div id="slideshow">
+                <div className="allcoursedetailsdiv2details">
+                  <Row>
+                    <Col md={4}>
+                      <img
+                        src="/picture/14.jpg"
+                        alt=""
+                        className="allcoursedetailsimg1"
+                      />
+                    </Col>
+                    <Col md={8} class="allcoursedetailscol1">
+                      <div></div>
+                    </Col>
+                  </Row>
+                </div>
+                <div className="allcoursedetailsdiv2details">
+                  <Row>
+                    <Col md={4}>
+                      <img
+                        src="/picture/14.jpg"
+                        alt=""
+                        className="allcoursedetailsimg1"
+                      />
+                    </Col>
+                    <Col md={8} class="allcoursedetailscol1">
+                      <div></div>
+                    </Col>
+                  </Row>
+                </div>
+                <div className="allcoursedetailsdiv2details">
+                  <Row>
+                    <Col md={4}>
+                      <img
+                        src="/picture/14.jpg"
+                        alt=""
+                        className="allcoursedetailsimg1"
+                      />
+                    </Col>
+                    <Col md={8} class="allcoursedetailscol1">
+                      <div></div>
+                    </Col>
+                  </Row>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button id="prevBtn" className="but1" onClick={previousSlide}>
+            Previous
+          </button>
+          <button id="nextBtn" className="but2" onClick={nextSlide}>
+            Next
+          </button>
+        </div> */
+        /* <Row>
+                <Col md={4}>
+                  <img
+                    src="/picture/14.jpg"
+                    alt=""
+                    className="allcoursedetailsimg1"
+                  />
+                </Col>
+                <Col md={8} className="allcoursedetailscol1">
+                  <div></div>
+                </Col>
+              </Row> */

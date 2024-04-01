@@ -1,6 +1,7 @@
 const express = require("express");
 const Registermodel = require("../model/Registermodel");
 const multer = require("multer");
+const Bcrypt = require("bcrypt");
 const { getVideoDurationInSeconds } = require("get-video-duration");
 const Course = require("../model/Coursemodel");
 const adminRouter = express.Router();
@@ -29,7 +30,7 @@ const storage = new CloudinaryStorage({
 
 const upload = multer({ storage: storage });
 
-adminRouter.get("/register", async (req, res) => {
+adminRouter.post("/register", async (req, res) => {
   try {
     const existingemail = await Registermodel.findOne({
       email: req.body.email,
@@ -41,13 +42,14 @@ adminRouter.get("/register", async (req, res) => {
         message: "Email already exists",
       });
     }
-    if (req.body.password !== req.body.cpassword) {
+    if (req.body.password !== req.body.confirmpassword) {
       return res.status(400).json({
         success: false,
         error: true,
         message: "wrong confirm password",
       });
     }
+    const hashedpwd = await Bcrypt.hash(req.body.password, 12);
     const regData = {
       name: req.body.name,
       email: req.body.email,
@@ -74,24 +76,11 @@ adminRouter.get("/register", async (req, res) => {
 
 adminRouter.post(
   "/corsedetailsuploading",
-  upload.array("video", 1),
-  // upload.fields([
-  //   {
-  //     name: "video",
-  //     maxCount: 1,
-  //   },
-  //   {
-  //     name: "photo",
-  //     maxCount: 1,
-  //   },
-  // ]),
-
+  upload.array("photo", 1),
   async (req, res) => {
     try {
       console.log("body", req.body);
       console.log("files", req.files);
-      // console.log("path", req.files["photo"][0].path);
-      // console.log("path", req.files["video"][0].path);
       console.log("files", JSON.stringify(req.files, null, 2));
 
       const data = {
@@ -103,15 +92,9 @@ adminRouter.post(
         skillLevel: req.body.skillLevel,
         course_outcome: req.body.course_outcome,
         category: req.body.category,
-        video: req.files[0].path,
-        // photo: req.files["photo"][0].path,
-        // video: req.files["video"][0].path,
+        photo: req.files[0].path,
       };
-
       const coursedeatils = await Course(data).save();
-
-      // const course = new Course(data); // Create a new Course instance
-      // const courseDetails = await course.save();
       return res.status(200).json({
         success: true,
         error: false,
@@ -129,6 +112,7 @@ adminRouter.post(
     }
   }
 );
+
 adminRouter.post(
   "/courseuploadingvideo/:id",
   upload.single("video"),
@@ -157,4 +141,5 @@ adminRouter.post(
     }
   }
 );
+
 module.exports = adminRouter;

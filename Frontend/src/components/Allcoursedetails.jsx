@@ -1,14 +1,79 @@
 // eslint-disable-next-line no-unused-vars
-import React from "react";
+import React, { useState } from "react";
 import "./Allcoursedetails.css";
 import Row from "react-bootstrap/Row";
-// eslint-disable-next-line no-unused-vars
-import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import { useParams } from "react-router-dom";
 const Allcoursedetails = () => {
   const { categories } = useParams();
   console.log(categories);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  function nextSlide() {
+    setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
+  }
+
+  function previousSlide() {
+    setCurrentSlide(
+      (prevSlide) => (prevSlide - 1 + slides.length) % slides.length
+    );
+  }
+
+  const slides = [
+    // eslint-disable-next-line react/jsx-key
+    <div className="allcoursedetailsdiv2border">
+      <div key={0} className="allcoursedetailsdiv2details">
+        <Row>
+          <Col md={4}>
+            <img
+              src="/picture/14.jpg"
+              alt=""
+              className="allcoursedetailsimg1"
+            />
+          </Col>
+          <Col md={8} className="allcoursedetailscol1">
+            <div>wrg33r4</div>
+          </Col>
+        </Row>
+      </div>
+    </div>,
+    // eslint-disable-next-line react/jsx-key
+    <div className="allcoursedetailsdiv2border">
+      <div key={0} className="allcoursedetailsdiv2details">
+        <Row>
+          <Col md={4}>
+            <img
+              src="/picture/14.jpg"
+              alt=""
+              className="allcoursedetailsimg1"
+            />
+          </Col>
+          <Col md={8} className="allcoursedetailscol1">
+            <div>wrg33</div>
+          </Col>
+        </Row>
+      </div>
+    </div>,
+    // eslint-disable-next-line react/jsx-key
+    <div className="allcoursedetailsdiv2border">
+      <div key={0} className="allcoursedetailsdiv2details">
+        <Row>
+          <Col md={4}>
+            <img
+              src="/picture/14.jpg"
+              alt=""
+              className="allcoursedetailsimg1"
+            />
+          </Col>
+          <Col md={8} className="allcoursedetailscol1">
+            <div>wrgr4</div>
+          </Col>
+        </Row>
+      </div>
+    </div>,
+    // Add other slides similarly
+  ];
+
   return (
     <>
       <section className="allcoursedetailspadding">
@@ -103,25 +168,11 @@ const Allcoursedetails = () => {
         <div className="allcoursedetailsheading2"> Featured Courses </div>
         <hr className="allcoursedetailscustom-hr1 " />
         <br />
-        <div className="allcoursedetailsdiv2 slide-in">
-          <div className="allcoursedetailsdiv2">
-            <div className="allcoursedetailsdiv2border">
-              <div className="allcoursedetailsdiv2details">
-                <Row>
-                  <Col md={4}>
-                    <img
-                      src="/picture/14.jpg"
-                      alt=""
-                      className="allcoursedetailsimg1"
-                    />
-                  </Col>
-                  <Col md={8} className="allcoursedetailscol1">
-                    <div></div>
-                  </Col>
-                </Row>
-              </div>
-            </div>
-          </div>
+        <div className="allcoursedetailsdiv2">
+          {slides[currentSlide]}
+
+          <button onClick={previousSlide}>Previous</button>
+          <button onClick={nextSlide}>Next</button>
         </div>
         <br />
         <br />

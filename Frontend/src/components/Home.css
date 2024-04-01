@@ -463,3 +463,17 @@ justify-content: center;
     height: 1px;
     width: 195px;
   }
+  .slide-in {
+    animation: slide-in 1s ease-in-out forwards;
+  }
+  
+  @keyframes slide-in {
+    from {
+      transform: translateX(-100%); /* Start from off-screen to the left */
+      opacity: 0; /* Start invisible */
+    }
+    to {
+      transform: translateX(0); /* Slide to the right to be visible */
+      opacity: 1; /* Become fully visible */
+    }
+  }

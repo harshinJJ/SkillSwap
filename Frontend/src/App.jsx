@@ -9,6 +9,8 @@ import Coursedetails from "./components/Coursedetails";
 import Specificcoursedetail from "./components/Specificcoursedetail";
 import Subscription from "./components/Subscription";
 import Allcoursedetails from "./components/Allcoursedetails";
+import Adminproductadding from "./components/Adminproductadding";
+
 function App() {
   return (
     <>
@@ -32,6 +34,7 @@ function App() {
             />
             <Route exact path="/Subscription" element={<Subscription />} />
             <Route exact path="/coursedetail" element={<Coursedetails />} />
+            <Route exact path="/Adminproductadding" element={<Adminproductadding />} />
           </Route>
         </Routes>
         <Footer />
