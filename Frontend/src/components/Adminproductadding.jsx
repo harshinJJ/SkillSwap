@@ -1,143 +1,245 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
-
+import "./Adminproductadding.css";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Adminproductadding = () => {
-  const [image, setImage] = useState(null);
-
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    setImage(file);
+  const [input, setInput] = useState({
+    title: "",
+    instructor: "",
+    description: "",
+    instructordescription: "",
+    duration: "",
+    skilllevel: "",
+    courseoutcome: "",
+    category: "",
+    photo: "",
+  });
+  const handlechange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInput((prev) => {
+      return { ...prev, [name]: value };
+    });
   };
-  const handleSubmit = () => {
-    // Here you can implement your logic to handle the image upload, for example, sending it to a server.
-    if (image) {
-      console.log("Selected image:", image);
-      // Implement your upload logic here
-    } else {
-      console.log("No image selected.");
-    }
+  const handleCourseOutcomeChange = (event) => {
+    const value = event.target.value;
+    const points = value.split("\n");
+    setInput((prev) => ({
+      ...prev,
+      courseoutcome: points,
+    }));
+  };
+
+  const imagehandler = (event) => {
+    setInput({
+      ...input,
+      photo: event.target.files[0],
+    });
+  };
+  const handlesubmit = (event) => {
+    // setFormerror(formvalidate(userinput));
+    event.preventDefault();
+    console.log(input);
+    const formdata = new FormData();
+    formdata.append("title", input.title);
+    formdata.append("instructor", input.instructor);
+    formdata.append("description", input.description);
+    formdata.append("instructordescription", input.instructordescription);
+    formdata.append("duration", input.duration);
+    formdata.append("skilllevel", input.skilllevel);
+    formdata.append("courseoutcome", input.courseoutcome);
+    formdata.append("category", input.category);
+    formdata.append("photo", input.photo);
+    axios
+      .post("http://localhost:8080/admin/corsedetailsuploading", formdata)
+      .then((data) => {
+        console.log(data);
+        setInput("");
+        toast.success("registration successful", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      });
   };
 
   return (
     <>
       <Container>
         <div className="signuppage">
+          <ToastContainer />
           <span className="signupheading">Add Course Details</span>
-          <div className="signupinputposition">
-            <input
-              type="text"
-              name="title"
-              //   style={{ borderColor: formerror.name ? "red" : "" }}
-              className="signupinput"
-              placeholder="Enter title"
-              //   onChange={handlechange}
-              //   onClick={() => {
-              //     setFormerror({ ...formerror, name: "" });
-              //   }}
-            />
-            <input
-              type="text"
-              name="description"
-              //   style={{ borderColor: formerror.email ? "red" : "" }}
-              className="signupinput"
-              placeholder="Enter description"
-              //   onChange={handlechange}
-              //   onClick={() => {
-              //     setFormerror({ ...formerror, email: "" });
-              //   }}
-            />
-            <input
-              type="text"
-              name="instructor"
-              //   style={{ borderColor: formerror.password ? "red" : "" }}
-              className="signupinput"
-              placeholder="Enter instructor Name"
-              //   onChange={handlechange}
-              //   onClick={() => {
-              //     setFormerror({ ...formerror, password: "" });
-              //   }}
-            />
-            <input
-              type="text"
-              name="instructor_description"
-              //   style={{ borderColor: formerror.confirmpassword ? "red" : "" }}
-              className="signupinput"
-              placeholder="Enter Instructor Description"
-              //   onChange={handlechange}
-              //   onClick={() => {
-              //     setFormerror({ ...formerror, confirmpassword: "" });
-              //   }}
-            />
-            <input
-              type="number"
-              name="duration"
-              //   style={{ borderColor: formerror.confirmpassword ? "red" : "" }}
-              className="signupinput"
-              placeholder="Enter Duration"
-              //   onChange={handlechange}
-              //   onClick={() => {
-              //     setFormerror({ ...formerror, confirmpassword: "" });
-              //   }}
-            />
-            <input
-              type="text"
-              name="skill level"
-              //   style={{ borderColor: formerror.confirmpassword ? "red" : "" }}
-              className="signupinput"
-              placeholder="Enter skill level"
-              //   onChange={handlechange}
-              //   onClick={() => {
-              //     setFormerror({ ...formerror, confirmpassword: "" });
-              //   }}
-            />
-            <input
-              type="text"
-              name="course_outcome"
-              //   style={{ borderColor: formerror.confirmpassword ? "red" : "" }}
-              className="signupinput"
-              placeholder="Enter Course Outcome"
-              //   onChange={handlechange}
-              //   onClick={() => {
-              //     setFormerror({ ...formerror, confirmpassword: "" });
-              //   }}
-            />
-            <input
-              type="text"
-              name="category"
-              //   style={{ borderColor: formerror.confirmpassword ? "red" : "" }}
-              className="signupinput"
-              placeholder="Enter Category"
-              //   onChange={handlechange}
-              //   onClick={() => {
-              //     setFormerror({ ...formerror, confirmpassword: "" });
-              //   }}
-            />
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-              style={{ display: "none" }}
-              id="upload-image"
-            />
-            <label htmlFor="upload-image" className="signupinput">
-              <div className="svg-wrapper-1">
-                <div className="svg-wrapper"></div>
+          <form onSubmit={handlesubmit} encType="multipart/form-data">
+            <div className="adminproductaddinputposition">
+              <div className="adminproductaddinputposition1">
+                <input
+                  type="text"
+                  name="title"
+                  //   style={{ borderColor: formerror.name ? "red" : "" }}
+                  className="adminproductaddinput1"
+                  placeholder="Enter title"
+                  onChange={handlechange}
+                  //   onClick={() => {
+                  //     setFormerror({ ...formerror, name: "" });
+                  //   }}
+                />
+                <input
+                  type="text"
+                  name="instructor"
+                  //   style={{ borderColor: formerror.password ? "red" : "" }}
+                  className="adminproductaddinput1"
+                  placeholder="Enter instructor Name"
+                  onChange={handlechange}
+                  //   onClick={() => {
+                  //     setFormerror({ ...formerror, password: "" });
+                  //   }}
+                />
               </div>
-              <span>Upload Image</span>
-            </label>
-            <button className="" onClick={handleSubmit}>
-              Submit
-            </button>
-          </div>
-          <button className="signupbutton">
-            <div className="svg-wrapper-1">
-              <div className="svg-wrapper">
-                <div className="addi">+</div>
+
+              <textarea
+                name="description"
+                // style={{ borderColor: formerror.email ? "red" : "" }}
+                className="adminproductaddinput2"
+                placeholder="Enter course description"
+                onChange={handlechange}
+                // onClick={() => {
+                //   setFormerror({ ...formerror, email: "" });
+                // }}
+              ></textarea>
+              <textarea
+                name="instructordescription"
+                // style={{ borderColor: formerror.email ? "red" : "" }}
+                className="adminproductaddinput2"
+                placeholder="Enter Instructor Description"
+                onChange={handlechange}
+                // onClick={() => {
+                //   setFormerror({ ...formerror, email: "" });
+                // }}
+              ></textarea>
+
+              <div className="adminproductaddinputposition1">
+                <input
+                  type="number"
+                  name="duration"
+                  //   style={{ borderColor: formerror.confirmpassword ? "red" : "" }}
+                  className="adminproductaddinput1"
+                  placeholder="Enter Duration"
+                  onChange={handlechange}
+                  //   onClick={() => {
+                  //     setFormerror({ ...formerror, confirmpassword: "" });
+                  //   }}
+                />
+                {/* <input
+                type="text"
+                name="skilllevel"
+                //   style={{ borderColor: formerror.confirmpassword ? "red" : "" }}
+                className="adminproductaddinput1"
+                placeholder="Enter skill level"
+                onChange={handlechange}
+                //   onClick={() => {
+                //     setFormerror({ ...formerror, confirmpassword: "" });
+                //   }}
+              /> */}
+                <select
+                  className="adminproductaddinput1"
+                  name="skilllevel"
+                  onChange={handlechange}
+                >
+                  <option value="None">Skill Level</option>
+                  <option value="Beginner">Beginner</option>
+                  <option value="Intermediate">Intermediate</option>
+                  <option value="Advanced">Advanced</option>
+                </select>
+              </div>
+              <textarea
+                name="courseoutcome"
+                className="adminproductaddinput2"
+                placeholder="Enter Course Outcome (One point per line)"
+                onChange={handleCourseOutcomeChange}
+              ></textarea>
+
+              <div>
+                {/* <input
+                type="text"
+                name="category"
+                //   style={{ borderColor: formerror.confirmpassword ? "red" : "" }}
+                className="adminproductaddinput1"
+                placeholder="Enter Category"
+                onChange={handlechange}
+                //   onClick={() => {
+                //     setFormerror({ ...formerror, confirmpassword: "" });
+                //   }}
+              /> */}
+                <select
+                  className="adminproductaddinput1"
+                  name="category"
+                  onChange={handlechange}
+                >
+                  <option value="None">Category Of Course</option>
+                  <option value="Music">Music</option>
+                  <option value="Design">Design</option>
+                  <option value="Lifestyle">Lifestyle</option>
+                  <option value="Development">Development</option>
+                  <option value="It & Software">It & Software</option>
+                  <option value="Health & Fitness">Health & Fitness</option>
+                  <option value="Photography & Video">
+                    Photography & Video
+                  </option>
+                  <option value="Finance & Accounting">
+                    Finance & Accounting
+                  </option>
+                </select>
+                <input
+                  type="file"
+                  accept="image/*"
+                  name="photo"
+                  onChange={imagehandler}
+                  style={{ display: "none" }}
+                  id="upload-image"
+                />
+                <label htmlFor="upload-image" className="adminproductaddinput1">
+                  <div className="svg-wrapper-1">
+                    <div className="svg-wrapper"></div>
+                  </div>
+                  <span>Upload Image</span>
+                </label>
               </div>
             </div>
-            <span>Upload</span>
-          </button>
+            <div className="buttonposition">
+              <button type="submit" className="productaddbutton">
+                <div className="svg-wrapper-1">
+                  <div className="svg-wrapper">
+                    <div className="addi productaddbuttontext">+</div>
+                  </div>
+                </div>
+                <span className="productaddbuttontext">Upload</span>
+              </button>
+            </div>
+          </form>
         </div>
         <br />
         <br />

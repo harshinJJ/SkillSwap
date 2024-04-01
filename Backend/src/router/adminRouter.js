@@ -17,6 +17,7 @@ const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
     folder: "skillswap",
+    // resourse_type: "video"
   },
 });
 // const storage = multer.diskStorage({
@@ -79,21 +80,22 @@ adminRouter.post(
   upload.array("photo", 1),
   async (req, res) => {
     try {
-      console.log("body", req.body);
-      console.log("files", req.files);
-      console.log("files", JSON.stringify(req.files, null, 2));
-
+      console.log(req.body);
+      const courseOutcomeWords = req.body.courseoutcome
+        .split(",")
+        .map((word) => word.trim());
       const data = {
         title: req.body.title,
         description: req.body.description,
         instructor: req.body.instructor,
-        instructor_description: req.body.instructor_description,
+        instructordescription: req.body.instructordescription,
         duration: req.body.duration,
-        skillLevel: req.body.skillLevel,
-        course_outcome: req.body.course_outcome,
+        skilllevel: req.body.skilllevel,
+        courseoutcome: courseOutcomeWords,
         category: req.body.category,
         photo: req.files[0].path,
       };
+      console.log(data);
       const coursedeatils = await Course(data).save();
       return res.status(200).json({
         success: true,
