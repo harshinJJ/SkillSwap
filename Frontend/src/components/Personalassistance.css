@@ -1,0 +1,37 @@
+.personalassistancefirstsection{
+    position: relative;
+    right: 120px;
+    bottom: 0px;
+}
+.personalassistancefirstsectionspan{
+ position: relative;
+ top: 19px;
+}
+/* .personalassistance2ndsection{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+.personalassistanceheading2{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 25px;
+  }
+  .personalassistancediv6{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+.personalassistancediv8{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    
+}

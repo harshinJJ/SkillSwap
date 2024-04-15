@@ -39,9 +39,22 @@ const Loginpage = () => {
           progress: undefined,
           theme: "colored",
         });
-        sessionStorage.setItem("token", data.data.token);
-        sessionStorage.setItem("userid", data.data.logindata._id);
-        sessionStorage.setItem("role", data.data.logindata.role);
+        console.log(data);
+        if (!data.data.useralldata) {
+          sessionStorage.setItem("token", data.data.token);
+          sessionStorage.setItem("userid", data.data.logindata._id);
+          sessionStorage.setItem("role", data.data.logindata.role);
+          sessionStorage.setItem("name", data.data.logindata.name);
+        } else {
+          sessionStorage.setItem("token", data.data.token);
+          sessionStorage.setItem("userid", data.data.logindata._id);
+          sessionStorage.setItem("role", data.data.logindata.role);
+          sessionStorage.setItem("name", data.data.logindata.name);
+          sessionStorage.setItem(
+            "subscription",
+            data.data.useralldata.subscription
+          );
+        }
         navigate("/");
         window.location.reload();
       })

@@ -6,6 +6,13 @@
     font-weight: 700;
     font-style: normal;
     font-size: 35px;
+    background-color: #2d2f31;
+    height: 100px;
+    padding: 70px 2px ;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .allcoursedetailsheading2{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -46,73 +53,18 @@
    position: relative;
    left: 110px;
 }
-
-  /* <div className="allcoursedetailsdiv2">
-          <div className="allcoursedetailsdiv2border">
-            <div className="allcoursedetailsdiv2details">
-             
-              <div id="slideshow">
-                <div className="allcoursedetailsdiv2details">
-                  <Row>
-                    <Col md={4}>
-                      <img
-                        src="/picture/14.jpg"
-                        alt=""
-                        className="allcoursedetailsimg1"
-                      />
-                    </Col>
-                    <Col md={8} class="allcoursedetailscol1">
-                      <div></div>
-                    </Col>
-                  </Row>
-                </div>
-                <div className="allcoursedetailsdiv2details">
-                  <Row>
-                    <Col md={4}>
-                      <img
-                        src="/picture/14.jpg"
-                        alt=""
-                        className="allcoursedetailsimg1"
-                      />
-                    </Col>
-                    <Col md={8} class="allcoursedetailscol1">
-                      <div></div>
-                    </Col>
-                  </Row>
-                </div>
-                <div className="allcoursedetailsdiv2details">
-                  <Row>
-                    <Col md={4}>
-                      <img
-                        src="/picture/14.jpg"
-                        alt=""
-                        className="allcoursedetailsimg1"
-                      />
-                    </Col>
-                    <Col md={8} class="allcoursedetailscol1">
-                      <div></div>
-                    </Col>
-                  </Row>
-                </div>
-              </div>
-            </div>
-          </div>
-          <button id="prevBtn" className="but1" onClick={previousSlide}>
-            Previous
-          </button>
-          <button id="nextBtn" className="but2" onClick={nextSlide}>
-            Next
-          </button>
-        </div> */
-        /* <Row>
-                <Col md={4}>
-                  <img
-                    src="/picture/14.jpg"
-                    alt=""
-                    className="allcoursedetailsimg1"
-                  />
-                </Col>
-                <Col md={8} className="allcoursedetailscol1">
-                  <div></div>
-                </Col>
-              </Row> */
+ .allcoursedetailscard2 {
+                width: 250px;
+                height: 340px;
+                margin-bottom: 25px;
+                background: white;
+                padding: 1rem;
+                border-radius: 5px;
+                border: 1px solid #05060f;
+                overflow: hidden;
+                color: black;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+}

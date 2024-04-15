@@ -1,0 +1,124 @@
+.paymentForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 300px; /* Adjust width as needed */
+    margin-left:100px ; /* Center the form horizontally */
+ /* Add a border for definition */
+    padding: 15px; /* Add some padding for better spacing */
+    border-radius: 5px; /* Add rounded corners for a softer look */
+  }
+  
+  .labelinpayment {
+
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+    margin-bottom: 1px; /* Add some space between label and input */
+  }
+  
+  .paymentinput {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px; /* Add rounded corners to input fields */
+    width: 400px;
+  }
+  
+  .submitButton {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 400px;
+    transition: background-color 0.2s ease-in-out; /* Add a smooth hover effect */
+  }
+  
+  .submitButton:hover {
+    background-color: #0067cc;
+  }
+  
+  
+  .paymentinput::placeholder {
+    color: #ccc; /* Set placeholder text color */
+    font-style: italic; /* Add a slight italic style for placeholders */
+  }
+.paymentpartheight{
+    height: 50px;
+}
+  .paymentcard {
+    margin-left: 25px;
+    margin-right: -1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    margin-bottom: 2rem;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.25rem;
+    background-color: rgba(17, 24, 39, 1);
+    padding: 1.5rem;
+  }
+  
+  .paymentheader {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .paymenttitle {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+    color: #fff
+  }
+  
+  .paymentprice {
+    font-size: 3.75rem;
+    line-height: 1;
+    font-weight: 700;
+    color: #fff
+  }
+  
+  .paymentdesc {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.625;
+    color: rgba(156, 163, 175, 1);
+  }
+  
+  .paymentlists {
+    margin-bottom: 1.5rem;
+    flex: 1 1 0%;
+    color: rgba(156, 163, 175, 1);
+  }
+  
+  .paymentlists .paymentlist {
+    margin-bottom: 0.5rem;
+    display: flex;
+    margin-left: 0.5rem
+  }
+  
+  .paymentlists .paymentlist svg {
+    height: 1.5rem;
+    width: 1.5rem;
+    flex-shrink: 0;
+    margin-right: 0.5rem;
+    color: rgba(167, 139, 250, 1);
+  }
+  
+  .paymentaction {
+    border: none;
+    outline: none;
+    display: inline-block;
+    border-radius: 0.25rem;
+    background-color: rgba(167, 139, 250, 1);
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: rgba(17, 24, 39, 1);
+  }

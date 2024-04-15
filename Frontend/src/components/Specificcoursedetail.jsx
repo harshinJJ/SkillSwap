@@ -1,30 +1,52 @@
 /* eslint-disable react/no-unescaped-entities */
 // eslint-disable-next-line no-unused-vars
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Specificcoursedetail.css";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
+
 const Specificcoursedetail = () => {
+  const { id } = useParams();
+  const [datas, setDatas] = useState("");
+  const [relatedcourse, setRelatedcourse] = useState([]);
+
+  useEffect(() => {
+    const scrollToTop = () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    };
+    scrollToTop();
+
+    axios
+      .get(`http://localhost:8080/admin/specificcoursedetails/${id}`)
+      .then((data) => {
+        console.log(data.data.relatedcourse);
+        setDatas(data.data.specificcourse);
+        setRelatedcourse(data.data.relatedcourse);
+      });
+  }, []);
+  const role = sessionStorage.getItem("role");
+  const subscription = sessionStorage.getItem("subscription");
+
   return (
     <section>
       <div className="specificcoursedetails1stpart">
         <Container>
           <Row>
             <Col md={8}>
-              <div className="specificcoursedetailsheading1">Course Name</div>
+              <div className="specificcoursedetailsheading1">{datas.title}</div>
               <br />
-              <div className="specificcoursedetailsdescription1">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora
-                error, recusandae labore facilis, reprehenderit velit ex aut
-                quia consequatur vel, corporis magnam quaerat esse eaque iusto
-                sapiente alias dicta? Aut!
-              </div>
+              <div className="specificcoursedetailsdescription1"></div>
             </Col>
             <Col md={4} className="specificcoursedetailscol1position">
               <div className="specificcoursedetailscard1">
                 <img
-                  src="/picture/5.png"
+                  src={datas.photo}
                   alt=""
                   className="specificcoursedetailsimg1"
                 />
@@ -34,33 +56,72 @@ const Specificcoursedetail = () => {
                   courses
                 </div>
                 <hr className="specificcoursedetailscustom-hr1" />
-
-                <button className="specificcoursedetailsbutton1">
-                  <div className="specificcoursedetailsbuy">Subscribe Now</div>
-                </button>
+                {role == 2 && subscription == 1 ? (
+                  <>
+                    <Link
+                      to={`/coursedetail/${id}`}
+                      style={{ textDecoration: "none" }}
+                    >
+                      <button className="specificcoursedetailsbutton1">
+                        <div className="specificcoursedetailsbuy">
+                          More Details
+                        </div>
+                      </button>
+                    </Link>
+                  </>
+                ) : role == 2 && subscription == 0 ? (
+                  <>
+                    <Link
+                      to={"/Subscription"}
+                      style={{ textDecoration: "none" }}
+                    >
+                      <button className="specificcoursedetailsbutton1">
+                        <div className="specificcoursedetailsbuy">
+                          Subscribe
+                        </div>
+                      </button>
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link to={"/Login"} style={{ textDecoration: "none" }}>
+                      <button className="specificcoursedetailsbutton1">
+                        <div className="specificcoursedetailsbuy">
+                          More Details
+                        </div>
+                      </button>
+                    </Link>
+                  </>
+                )}
               </div>
             </Col>
           </Row>
         </Container>
       </div>
       <br />
+      <br />
+      <br />
       <Container>
         <div className="specificcoursedetailsdescription3position">
           <div className="specificcoursedetailsheading2">
             What You'll Learn Here
           </div>
-          <span className="specificcoursedetailsdescription3">{"=>"}</span>
-          <span className="specificcoursedetailsdescription3">{"=>"}</span>
-          <span className="specificcoursedetailsdescription3">{"=>"}</span>
+          {datas &&
+            datas.courseoutcome &&
+            datas.courseoutcome.map((data, index) => (
+              <span key={index} className="specificcoursedetailsdescription3">
+                {"=>"}
+                {data}
+              </span>
+            ))}
         </div>
+        <br />
         <br />
         <div className="specificcoursedetailsdescription4position">
           <span className="specificcoursedetailsheading2">Description</span>
+          <br />
           <span className="specificcoursedetailsdescription4">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam minima
-            non officia perferendis rem atque a expedita totam iste quam ad
-            officiis impedit repellendus temporibus, dolorem sequi mollitia
-            laboriosam sunt!
+            {datas.description}
           </span>
         </div>
         <br />
@@ -139,62 +200,39 @@ const Specificcoursedetail = () => {
           <div className="specificcoursedetailsothercoursedetails">
             <div>
               <Row>
-                <Col md={4} className="specificcoursedetailscol2position">
-                  <div className="specificcoursedetailscard2">
-                    <img
-                      src="/picture/5.png"
-                      alt=""
-                      className="specificcoursedetailsimg1"
-                    />
-                    <br />
-                    <div className="specificcoursedetailsdescription2">
-                      Web development
-                    </div>
-                    <hr className="specificcoursedetailscustom-hr2" />
+                {relatedcourse.slice(0, 3).map(
+                  (
+                    data // eslint-disable-next-line react/jsx-key
+                  ) => (
+                    // eslint-disable-next-line react/jsx-key
+                    <Col md={4} className="specificcoursedetailscol2position">
+                      <div className="specificcoursedetailscard3">
+                        <img
+                          src={data.photo}
+                          alt=""
+                          className="specificcoursedetailsimg2"
+                        />
+                        <br />
+                        <div className="specificcoursedetailsdescription2">
+                          {data.title}
+                        </div>
+                        <hr className="specificcoursedetailscustom-hr2" />
 
-                    <button className="specificcoursedetailsbutton1">
-                      <div className="specificcoursedetailsbuy">Details</div>
-                    </button>
-                  </div>
-                </Col>
-                <Col md={4} className="specificcoursedetailscol2position">
-                  {" "}
-                  <div className="specificcoursedetailscard2">
-                    <img
-                      src="/picture/5.png"
-                      alt=""
-                      className="specificcoursedetailsimg1"
-                    />
-                    <br />
-                    <div className="specificcoursedetailsdescription2">
-                      Web development
-                    </div>
-                    <hr className="specificcoursedetailscustom-hr2" />
-
-                    <button className="specificcoursedetailsbutton1">
-                      <div className="specificcoursedetailsbuy">Details</div>
-                    </button>
-                  </div>
-                </Col>
-                <Col md={4} className="specificcoursedetailscol2position">
-                  {" "}
-                  <div className="specificcoursedetailscard2">
-                    <img
-                      src="/picture/5.png"
-                      alt=""
-                      className="specificcoursedetailsimg1"
-                    />
-                    <br />
-                    <div className="specificcoursedetailsdescription2">
-                      Web development
-                    </div>
-                    <hr className="specificcoursedetailscustom-hr2" />
-
-                    <button className="specificcoursedetailsbutton1">
-                      <div className="specificcoursedetailsbuy">Details</div>
-                    </button>
-                  </div>
-                </Col>
+                        <button
+                          className="specificcoursedetailsbutton1"
+                          onClick={() => {
+                            window.location.reload();
+                            window.location.href = `/Specificcoursedetail/${data._id}`;
+                          }}
+                        >
+                          <div className="specificcoursedetailsbuy">
+                            Details
+                          </div>
+                        </button>
+                      </div>
+                    </Col>
+                  )
+                )}
               </Row>
             </div>
           </div>

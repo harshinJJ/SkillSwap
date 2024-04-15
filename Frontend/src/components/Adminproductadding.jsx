@@ -39,6 +39,10 @@ const Adminproductadding = () => {
       photo: event.target.files[0],
     });
   };
+
+  // const videoHandler = (event) => {
+  //   setInput({ ...input, video: event.target.files[0] });
+  // };
   const handlesubmit = (event) => {
     // setFormerror(formvalidate(userinput));
     event.preventDefault();
@@ -52,26 +56,26 @@ const Adminproductadding = () => {
     formdata.append("skilllevel", input.skilllevel);
     formdata.append("courseoutcome", input.courseoutcome);
     formdata.append("category", input.category);
+    // formdata.append("video", input.video);
     formdata.append("photo", input.photo);
     axios
       .post("http://localhost:8080/admin/corsedetailsuploading", formdata)
       .then((data) => {
         console.log(data);
         setInput("");
-        toast.success("registration successful", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
-
-        setTimeout(() => {
-          window.location.reload();
-        }, 1000);
+        const courseid = data.data.productdetails._id;
+        console.log(courseid);
+        // toast.success("registration successful", {
+        //   position: "top-right",
+        //   autoClose: 5000,
+        //   hideProgressBar: false,
+        //   closeOnClick: true,
+        //   pauseOnHover: true,
+        //   draggable: true,
+        //   progress: undefined,
+        //   theme: "colored",
+        // });
+        window.location.href = `/adminvideoupload/${courseid}`;
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
@@ -228,6 +232,20 @@ const Adminproductadding = () => {
                   <span>Upload Image</span>
                 </label>
               </div>
+              {/* <input
+                type="file"
+                accept="video/*"
+                name="video"
+                onChange={videoHandler}
+                style={{ display: "none" }}
+                id="upload-video"
+              />
+              <label htmlFor="upload-video" className="adminproductaddinput1">
+                <div className="svg-wrapper-1">
+                  <div className="svg-wrapper"></div>
+                </div>
+                <span>Upload Video</span>
+              </label> */}
             </div>
             <div className="buttonposition">
               <button type="submit" className="productaddbutton">
@@ -236,7 +254,7 @@ const Adminproductadding = () => {
                     <div className="addi productaddbuttontext">+</div>
                   </div>
                 </div>
-                <span className="productaddbuttontext">Upload</span>
+                <span className="productaddbuttontext">Video Upload</span>
               </button>
             </div>
           </form>

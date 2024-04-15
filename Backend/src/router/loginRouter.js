@@ -2,13 +2,17 @@ const express = require("express");
 const Bcrypt = require("bcrypt");
 const Registermodel = require("../model/Registermodel");
 const jwt = require("jsonwebtoken");
+const Loginmodel = require("../model/Loginmodel");
 const loginRouter = express.Router();
 
 loginRouter.post("/loginpart", async (req, res) => {
   try {
-    const findexistinguser = await Registermodel.findOne({
+    console.log(req.body);
+    const findexistinguser = await Loginmodel.findOne({
       email: req.body.email,
     });
+    const findname = await Registermodel.findOne({ email: req.body.email });
+
     if (!findexistinguser) {
       return res.status(400).json({
         success: false,
@@ -40,6 +44,7 @@ loginRouter.post("/loginpart", async (req, res) => {
         error: false,
         message: "Login success",
         logindata: findexistinguser,
+        useralldata: findname,
         token: token,
       });
     }

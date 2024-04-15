@@ -1,12 +1,14 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Allcoursedetails.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
+
 const Allcoursedetails = () => {
   const { categories } = useParams();
-  console.log(categories);
+  const [datas, setDatas] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   function nextSlide() {
@@ -19,66 +21,41 @@ const Allcoursedetails = () => {
     );
   }
 
-  const slides = [
-    // eslint-disable-next-line react/jsx-key
-    <div className="allcoursedetailsdiv2border">
-      <div key={0} className="allcoursedetailsdiv2details">
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/admin/coursedetails/${categories}`)
+      .then((data) => {
+        setDatas(data.data.specificcourse);
+      });
+  }, []);
+  console.log(datas);
+
+  const slides = datas.map((data, index) => (
+    <div className="allcoursedetailsdiv2border" key={index}>
+      <div className="allcoursedetailsdiv2details">
         <Row>
           <Col md={4}>
-            <img
-              src="/picture/14.jpg"
-              alt=""
-              className="allcoursedetailsimg1"
-            />
+            <img src={data.photo} alt="" className="allcoursedetailsimg1" />
           </Col>
           <Col md={8} className="allcoursedetailscol1">
-            <div>wrg33r4</div>
+            <div className="allcoursedetailscol1div1">{data.title}</div>
+            <br />
+            <div className="allcoursedetailscol1div">
+              {" "}
+              {data.description.split(" ").slice(0, 90).join(" ")}
+            </div>
           </Col>
         </Row>
       </div>
-    </div>,
-    // eslint-disable-next-line react/jsx-key
-    <div className="allcoursedetailsdiv2border">
-      <div key={0} className="allcoursedetailsdiv2details">
-        <Row>
-          <Col md={4}>
-            <img
-              src="/picture/14.jpg"
-              alt=""
-              className="allcoursedetailsimg1"
-            />
-          </Col>
-          <Col md={8} className="allcoursedetailscol1">
-            <div>wrg33</div>
-          </Col>
-        </Row>
-      </div>
-    </div>,
-    // eslint-disable-next-line react/jsx-key
-    <div className="allcoursedetailsdiv2border">
-      <div key={0} className="allcoursedetailsdiv2details">
-        <Row>
-          <Col md={4}>
-            <img
-              src="/picture/14.jpg"
-              alt=""
-              className="allcoursedetailsimg1"
-            />
-          </Col>
-          <Col md={8} className="allcoursedetailscol1">
-            <div>wrgr4</div>
-          </Col>
-        </Row>
-      </div>
-    </div>,
-    // Add other slides similarly
-  ];
+    </div>
+  ));
 
   return (
     <>
+      <div className="allcoursedetailsheading">{categories} Courses</div>
+
       <section className="allcoursedetailspadding">
         <br />
-        <div className="allcoursedetailsheading">{categories} Courses</div>
         <br />
 
         <div className="allcoursedetailsheading2">
@@ -88,79 +65,26 @@ const Allcoursedetails = () => {
         <hr className="allcoursedetailscustom-hr1 " />
         <br />
 
-        <Row>
-          <Col md={3} className="homepagefourthsectioncol2position">
-            <div className="homepagefourthsectioncard2">
-              <img
-                src="/picture/5.png"
-                alt=""
-                className="specificcoursedetailsimg1"
-              />
-              <br />
-              <div className="specificcoursedetailsdescription2">
-                Web development
+        <Row className="homepagefourthsectioncol2position">
+          {datas.map((data) => (
+            // eslint-disable-next-line react/jsx-key
+            <Col md={3} className="homepagefourthsectioncol2position">
+              <div className="allcoursedetailscard2">
+                <img src={data.photo} alt="" className="allcoursedetailimg2" />
+                <br />
+                <br />
+                <div className="specificcoursedetailsdescription2">
+                  {data.title}
+                </div>
+                <hr className="homepagefourthsectioncustom-hr2" />
+                <Link to={`/Specificcoursedetail/${data._id}`}>
+                  <button className="specificcoursedetailsbutton1">
+                    <div className="specificcoursedetailsbuy">Details</div>
+                  </button>
+                </Link>
               </div>
-              <hr className="homepagefourthsectioncustom-hr2" />
-
-              <button className="specificcoursedetailsbutton1">
-                <div className="specificcoursedetailsbuy">Details</div>
-              </button>
-            </div>
-          </Col>
-          <Col md={3} className="homepagefourthsectioncol2position">
-            <div className="homepagefourthsectioncard2">
-              <img
-                src="/picture/5.png"
-                alt=""
-                className="specificcoursedetailsimg1"
-              />
-              <br />
-              <div className="specificcoursedetailsdescription2">
-                Web development
-              </div>
-              <hr className="homepagefourthsectioncustom-hr2" />
-
-              <button className="specificcoursedetailsbutton1">
-                <div className="specificcoursedetailsbuy">Details</div>
-              </button>
-            </div>
-          </Col>
-          <Col md={3} className="homepagefourthsectioncol2position">
-            <div className="homepagefourthsectioncard2">
-              <img
-                src="/picture/5.png"
-                alt=""
-                className="specificcoursedetailsimg1"
-              />
-              <br />
-              <div className="specificcoursedetailsdescription2">
-                Web development
-              </div>
-              <hr className="homepagefourthsectioncustom-hr2" />
-
-              <button className="specificcoursedetailsbutton1">
-                <div className="specificcoursedetailsbuy">Details</div>
-              </button>
-            </div>
-          </Col>
-          <Col md={3} className="homepagefourthsectioncol2position">
-            <div className="homepagefourthsectioncard2">
-              <img
-                src="/picture/5.png"
-                alt=""
-                className="specificcoursedetailsimg1"
-              />
-              <br />
-              <div className="specificcoursedetailsdescription2">
-                Web development
-              </div>
-              <hr className="homepagefourthsectioncustom-hr2" />
-
-              <button className="specificcoursedetailsbutton1">
-                <div className="specificcoursedetailsbuy">Details</div>
-              </button>
-            </div>
-          </Col>
+            </Col>
+          ))}
         </Row>
         <br />
         <br />
@@ -168,16 +92,15 @@ const Allcoursedetails = () => {
         <div className="allcoursedetailsheading2"> Featured Courses </div>
         <hr className="allcoursedetailscustom-hr1 " />
         <br />
-        <div className="allcoursedetailsdiv2">
-          {slides[currentSlide]}
+        <div className="allcoursedetailsdiv2">{slides[currentSlide]}</div>
 
-          <button onClick={previousSlide}>Previous</button>
-          <button onClick={nextSlide}>Next</button>
+        <div onClick={previousSlide} className="forwardbutton">
+          {">"}
         </div>
-        <br />
-        <br />
-        <br />
-        <div>
+        <div onClick={nextSlide} className="backwordbutton">
+          {"<"}
+        </div>
+        <div className="allcoursedetailsotherhead">
           <div className="allcoursedetailsheading2"> Popular instructors </div>
           <br />
           <hr className="allcoursedetailscustom-hr1 " />
@@ -321,7 +244,6 @@ const Allcoursedetails = () => {
             </Col>
           </Row>
         </div>
-        <br />
         <br />
       </section>
     </>

@@ -10,6 +10,13 @@ import Specificcoursedetail from "./components/Specificcoursedetail";
 import Subscription from "./components/Subscription";
 import Allcoursedetails from "./components/Allcoursedetails";
 import Adminproductadding from "./components/Adminproductadding";
+import Personalassistance from "./components/Personalassistance";
+import Personalassistanceadding from "./components/Personalassistanceadding";
+import Mymessages from "./components/Mymessages";
+import Adminsubscriptionupdate from "./components/Adminsubscriptionupdate";
+import Adminupdatecourse from "./components/Adminupdatecourse";
+import PaymentForm from "./components/PaymentForm";
+import Coursevideoupload from "./components/Coursevideoupload";
 
 function App() {
   return (
@@ -29,12 +36,47 @@ function App() {
             />
             <Route
               exact
-              path="/Specificcoursedetail"
+              path="/Specificcoursedetail/:id"
               element={<Specificcoursedetail />}
             />
             <Route exact path="/Subscription" element={<Subscription />} />
-            <Route exact path="/coursedetail" element={<Coursedetails />} />
-            <Route exact path="/Adminproductadding" element={<Adminproductadding />} />
+            <Route exact path="/coursedetail/:id" element={<Coursedetails />} />
+            <Route
+              exact
+              path="/Adminproductadding"
+              element={<Adminproductadding />}
+            />
+            <Route
+              exact
+              path="/Personalassistance"
+              element={<Personalassistance />}
+            />
+            <Route
+              exact
+              path="/Personalassistanceadding"
+              element={<Personalassistanceadding />}
+            />
+            <Route exact path="/mymessage" element={<Mymessages />} />
+            <Route
+              exact
+              path="/adminsubscriptionupdate/:subscriptionid"
+              element={<Adminsubscriptionupdate />}
+            />
+            <Route
+              exact
+              path="/adminupdatecourse"
+              element={<Adminupdatecourse />}
+            />
+            <Route
+              exact
+              path="/adminvideoupload/:id"
+              element={<Coursevideoupload />}
+            />
+            <Route
+              exact
+              path="/PaymentForm/:subscriptionid"
+              element={<PaymentForm />}
+            />
           </Route>
         </Routes>
         <Footer />

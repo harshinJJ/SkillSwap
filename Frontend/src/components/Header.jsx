@@ -31,31 +31,21 @@ const Header = () => {
                 style={{ maxHeight: "100px" }}
                 navbarScroll
               >
-                <Nav.Link href="/" className="navtextstyle">
-                  Home
-                </Nav.Link>
                 <Nav.Link href="/Adminproductadding" className="navtextstyle">
                   Add New Course
                 </Nav.Link>
-                <Nav.Link href="/" className="navtextstyle">
-                  Subscription
+                <Nav.Link href="/adminupdatecourse" className="navtextstyle">
+                  Update Course
+                </Nav.Link>
+                <Nav.Link href="/Subscription" className="navtextstyle">
+                  Update Subscription
+                </Nav.Link>
+                <Nav.Link href="/mymessage" className="navtextstyle">
+                  My Messages
                 </Nav.Link>
               </Nav>
             </Navbar.Collapse>
-            <Form className="d-flex search-spacing">
-              <Form.Control
-                type="search"
-                placeholder="Search"
-                className="me-2 "
-                style={{
-                  fontFamily:
-                    "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif",
-                  borderColor: "black",
-                  borderRadius: "20px",
-                }}
-                aria-label="Search"
-              />
-            </Form>
+
             <Button
               href="/"
               variant="outline-success"
@@ -129,7 +119,7 @@ const Header = () => {
                 </NavDropdown>
               </Nav>
             </Navbar.Collapse>
-            <Form className="d-flex search-spacing">
+            {/* <Form className="d-flex search-spacing">
               <Form.Control
                 type="search"
                 placeholder="Search"
@@ -142,7 +132,7 @@ const Header = () => {
                 }}
                 aria-label="Search"
               />
-            </Form>
+            </Form> */}
 
             <Button
               href="/"
@@ -159,7 +149,7 @@ const Header = () => {
                 e.target.style.backgroundColor = "grey"; // Change hover color
               }}
               onMouseOut={(e) => {
-                e.target.style.backgroundColor = "transparent"; // Reset to original color
+                e.target.style.backgroundColor = "black"; // Reset to original color
               }}
               onClick={handleonclick}
             >
@@ -218,7 +208,7 @@ const Header = () => {
                 </NavDropdown>
               </Nav>
             </Navbar.Collapse>
-            <Form className="d-flex search-spacing">
+            {/* <Form className="d-flex search-spacing">
               <Form.Control
                 type="search"
                 placeholder="Search"
@@ -231,7 +221,7 @@ const Header = () => {
                 }}
                 aria-label="Search"
               />
-            </Form>
+            </Form> */}
             <Link to="/Login">
               <Button
                 variant="outline-success"

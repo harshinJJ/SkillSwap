@@ -1,6 +1,6 @@
 .specificcoursedetails1stpart{
     background-color: #2d2f31;
-    height: 300px;
+    height: 200px;
     padding: 70px 2px ;
     color: white;
 }
@@ -9,6 +9,8 @@
     font-weight: 700;
     font-style: normal;
     font-size: 40px;
+    position: relative;
+  
 }
 .specificcoursedetailsdescription1{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -19,14 +21,15 @@
     justify-content: center;
 }
 .specificcoursedetailsimg1{
-    width: 90px;
+    width: 240px;
+    border-radius: 10px;
 }
 .specificcoursedetailsdescription2{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;
 }
 .specificcoursedetailscard1 {
-    width: 230px;
+    width: 270px;
     height: auto;
     background: white;
     padding: 1rem;
@@ -78,10 +81,12 @@
   }
   .specificcoursedetailsheading2{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 24px;
+    font-size: 29px;
+    font-weight: 600;
   }
   .specificcoursedetailsdescription3{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
   }
   .specificcoursedetailsdescription4position{
     width: 820px;
@@ -155,4 +160,26 @@
     .specificcoursedetailsimg2{
         width: 70px;
     }
-   
+    .specificcoursedetailsdescription4{
+      font-size: 20px;
+      width: 750px;
+    }
+    .specificcoursedetailscard3 {
+      width: 200px;
+      height: 278px;
+      background: white;
+      padding: 1rem;
+      border-radius: 1rem;
+      border: 0.5vmin solid #05060f;
+      box-shadow: 0rem 0rem 1rem #05060f;
+      overflow: hidden;
+      color: black;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+    .specificcoursedetailsimg2{
+      width: 90px;
+      border-radius: 10px;
+  }
