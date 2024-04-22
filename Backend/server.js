@@ -31,3 +31,5 @@ app.use("/message", messageRouter);
 app.listen(process.env.PORT_NUMBER, () => {
   console.log("server started");
 });
+
+// console.log(hi);
