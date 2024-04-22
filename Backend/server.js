@@ -28,6 +28,10 @@ app.use("/admin", adminRouter);
 app.use("/login", loginRouter);
 app.use("/message", messageRouter);
 
+app.get("/", (req, res) => {
+  res.send("server is on");
+});
+
 app.listen(process.env.PORT_NUMBER, () => {
   console.log("server started");
 });
