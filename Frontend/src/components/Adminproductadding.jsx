@@ -59,7 +59,6 @@ const Adminproductadding = () => {
     formdata.append("category", input.category);
     // formdata.append("video", input.video);
     formdata.append("photo", input.photo);
-   
     axios
       .post(`${baseurl}/admin/corsedetailsuploading`, formdata)
       .then((data) => {

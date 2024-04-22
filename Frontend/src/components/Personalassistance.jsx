@@ -5,7 +5,6 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import "./Personalassistance.css";
 import { Link } from "react-router-dom";
-import { baseurl } from "../constants/constant";
 
 const Personalassistance = () => {
   useEffect(() => {
