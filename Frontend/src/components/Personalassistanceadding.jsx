@@ -4,7 +4,9 @@ import Container from "react-bootstrap/Container";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+
 import { useNavigate } from "react-router-dom";
+import { baseurl } from "../constants/constant";
 const Personalassistanceadding = () => {
   const navigate = useNavigate();
   const [input, setInput] = useState({
@@ -47,7 +49,7 @@ const Personalassistanceadding = () => {
     formdata.append("description", input.description);
     formdata.append("photo", input.photo);
     axios
-      .post("http://localhost:8080/instructor/register", formdata)
+      .post(`${baseurl}/instructor/register`, formdata)
       .then((data) => {
         console.log(data);
         toast.success("Registration successful", {

@@ -7,6 +7,7 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import { baseurl } from "../constants/constant";
 
 const Specificcoursedetail = () => {
   const { id } = useParams();
@@ -23,7 +24,7 @@ const Specificcoursedetail = () => {
     scrollToTop();
 
     axios
-      .get(`http://localhost:8080/admin/specificcoursedetails/${id}`)
+      .get(`${baseurl}/admin/specificcoursedetails/${id}`)
       .then((data) => {
         console.log(data.data.relatedcourse);
         setDatas(data.data.specificcourse);

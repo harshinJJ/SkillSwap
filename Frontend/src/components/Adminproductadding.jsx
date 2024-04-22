@@ -5,6 +5,7 @@ import "./Adminproductadding.css";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { baseurl } from "../constants/constant";
 const Adminproductadding = () => {
   const [input, setInput] = useState({
     title: "",
@@ -58,8 +59,9 @@ const Adminproductadding = () => {
     formdata.append("category", input.category);
     // formdata.append("video", input.video);
     formdata.append("photo", input.photo);
+   
     axios
-      .post("http://localhost:8080/admin/corsedetailsuploading", formdata)
+      .post(`${baseurl}/admin/corsedetailsuploading`, formdata)
       .then((data) => {
         console.log(data);
         setInput("");

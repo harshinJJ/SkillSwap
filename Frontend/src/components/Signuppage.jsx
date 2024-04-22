@@ -5,6 +5,8 @@ import "./Signuppage.css";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { baseurl } from "../constants/constant";
+
 const Signuppage = () => {
   const [userinput, setUserinput] = useState({
     name: "",
@@ -25,7 +27,7 @@ const Signuppage = () => {
     setFormerror(formvalidate(userinput));
     console.log(userinput);
     axios
-      .post("http://localhost:8080/user/register", userinput)
+      .post(`${baseurl}/user/register`, userinput)
       .then((data) => {
         console.log(data);
         toast.success("registration successful", {

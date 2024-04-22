@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { baseurl } from "../constants/constant";
 
 function PaymentForm() {
   const { subscriptionid } = useParams();
@@ -15,7 +16,7 @@ function PaymentForm() {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:8080/subscription/specificsubscriptiondetails/${subscriptionid}`
+        `${baseurl}/subscription/specificsubscriptiondetails/${subscriptionid}`
       )
       .then((data) => {
         setSub(data.data.specificsubdata);

@@ -6,6 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Loginpage.css";
 import { useNavigate } from "react-router-dom";
+import { baseurl } from "../constants/constant";
 
 const Loginpage = () => {
   const [userinput, setUserinput] = useState({
@@ -26,7 +27,7 @@ const Loginpage = () => {
     setFormerror(formvalidate(userinput));
     console.log(userinput);
     axios
-      .post("http://localhost:8080/login/loginpart", userinput)
+      .post(`${baseurl}/login/loginpart`, userinput)
       .then((data) => {
         console.log(data);
         toast.success("Login successful", {

@@ -5,6 +5,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useParams } from "react-router-dom";
+import { baseurl } from "../constants/constant";
 
 const Adminsubscriptionupdate = () => {
   const { subscriptionid } = useParams();
@@ -18,7 +19,7 @@ const Adminsubscriptionupdate = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:8080/subscription/specificsubscriptiondetails/${subscriptionid}`
+        `${baseurl}/subscription/specificsubscriptiondetails/${subscriptionid}`
       )
       .then((data) => {
         setSub(data.data.specificsubdata);
@@ -36,7 +37,7 @@ const Adminsubscriptionupdate = () => {
     event.preventDefault();
     axios
       .post(
-        `http://localhost:8080/subscription/updatesubscription/${subscriptionid}`,
+        `${baseurl}http://localhost:8080/subscription/updatesubscription/${subscriptionid}`,
         input
       )
       .then((data) => {

@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import "./Coursedetails.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { baseurl } from "../constants/constant";
 
 const Coursedetails = () => {
   const { id } = useParams();
@@ -13,7 +14,7 @@ const Coursedetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/admin/specificcoursedetails/${id}`)
+      .get(`${baseurl}http://localhost:8080/admin/specificcoursedetails/${id}`)
       .then((data) => {
         console.log(data.data.specificcourse);
         setDatas(data.data.specificcourse);

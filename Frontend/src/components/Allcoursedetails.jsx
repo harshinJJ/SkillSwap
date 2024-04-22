@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import { baseurl } from "../constants/constant";
 
 const Allcoursedetails = () => {
   const { categories } = useParams();
@@ -23,7 +24,7 @@ const Allcoursedetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/admin/coursedetails/${categories}`)
+      .get(`${baseurl}http://localhost:8080/admin/coursedetails/${categories}`)
       .then((data) => {
         setDatas(data.data.specificcourse);
       });

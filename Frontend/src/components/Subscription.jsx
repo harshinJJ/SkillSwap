@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import "./Subscription.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { baseurl } from "../constants/constant";
 
 const Subscription = () => {
   const [subdata, setSubdata] = useState([]);
@@ -13,7 +14,7 @@ const Subscription = () => {
   const Subscription = sessionStorage.getItem("subscription");
   useEffect(() => {
     axios
-      .get("http://localhost:8080/subscription/subscriptiondetails")
+      .get(`${baseurl}/subscription/subscriptiondetails`)
       .then((data) => {
         console.log(data);
         setSubdata(data.data.subdata);

@@ -6,6 +6,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { baseurl } from "../constants/constant";
 
 const Coursevideoupload = () => {
   const [input, setInput] = useState({
@@ -25,7 +26,7 @@ const Coursevideoupload = () => {
     const formdata = new FormData();
     formdata.append("video", input.video);
     axios
-      .post(`http://localhost:8080/admin/courseuploadingvideo/${id}`, formdata)
+      .post(`${baseurl}http://localhost:8080/admin/courseuploadingvideo/${id}`, formdata)
       .then((data) => {
         console.log(data);
         toast.success("registration successful", {

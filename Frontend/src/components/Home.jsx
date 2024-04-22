@@ -6,14 +6,17 @@ import Col from "react-bootstrap/Col";
 import "./Home.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { baseurl } from "../constants/constant";
+
 const Home = () => {
+  console.log(baseurl);
   const role = sessionStorage.getItem("role");
   // eslint-disable-next-line no-unused-vars
   const [searchInput, setSearchInput] = useState("");
   const [datas, setDatas] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:8080/admin/corsedetails").then((data) => {
+    axios.get(`${baseurl}/admin/corsedetails`).then((data) => {
       console.log(data.data.coursedetail);
       setDatas(data.data.coursedetail);
     });
