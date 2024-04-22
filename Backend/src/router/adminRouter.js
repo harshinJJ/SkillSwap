@@ -2,7 +2,6 @@ const express = require("express");
 const Registermodel = require("../model/Registermodel");
 const multer = require("multer");
 const Bcrypt = require("bcrypt");
-const { getVideoDurationInSeconds } = require("get-video-duration");
 const Course = require("../model/Coursemodel");
 const adminRouter = express.Router();
 const cloudinary = require("cloudinary").v2;
